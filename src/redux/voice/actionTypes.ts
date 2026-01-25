@@ -1,0 +1,4 @@
+export const SPEECH_START = 'SPEECH_START';
+export const SPEECH_RESULT = 'SPEECH_RESULT';
+export const SPEECH_STOP = 'SPEECH_STOP';
+export const INTENT_DETECTED = 'INTENT_DETECTED';

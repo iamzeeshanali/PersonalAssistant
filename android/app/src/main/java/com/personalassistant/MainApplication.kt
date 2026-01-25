@@ -6,6 +6,9 @@ import com.facebook.react.ReactApplication
 import com.facebook.react.ReactHost
 import com.facebook.react.ReactNativeApplicationEntryPoint.loadReactNative
 import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
+import com.personalassistant.assistant.VoicePackage
+import com.personalassistant.assistant.OpenAppPackage
+import com.personalassistant.assistant.CallPackage
 
 class MainApplication : Application(), ReactApplication {
 
@@ -15,7 +18,9 @@ class MainApplication : Application(), ReactApplication {
       packageList =
         PackageList(this).packages.apply {
           // Packages that cannot be autolinked yet can be added manually here, for example:
-          // add(MyReactNativePackage())
+            add(VoicePackage())
+            add(OpenAppPackage())
+            add(CallPackage())
         },
     )
   }
