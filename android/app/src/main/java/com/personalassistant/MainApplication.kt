@@ -9,24 +9,28 @@ import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
 import com.personalassistant.assistant.VoicePackage
 import com.personalassistant.assistant.OpenAppPackage
 import com.personalassistant.assistant.CallPackage
+import com.personalassistant.assistant.WakeWordPackage
+import com.personalassistant.assistant.JarvisPackage
 
-class MainApplication : Application(), ReactApplication {
+public class MainApplication : Application(), ReactApplication {
 
-  override val reactHost: ReactHost by lazy {
-    getDefaultReactHost(
-      context = applicationContext,
-      packageList =
-        PackageList(this).packages.apply {
-          // Packages that cannot be autolinked yet can be added manually here, for example:
-            add(VoicePackage())
-            add(OpenAppPackage())
-            add(CallPackage())
-        },
-    )
-  }
+    override val reactHost: ReactHost by lazy {
+        getDefaultReactHost(
+            context = applicationContext,
+            packageList =
+                PackageList(this).packages.apply {
+                    // Packages that cannot be autolinked yet can be added manually here, for example:
+                    add(VoicePackage())
+                    add(OpenAppPackage())
+                    add(CallPackage())
+                    add(WakeWordPackage())
+                    add(JarvisPackage())
+                },
+        )
+    }
 
-  override fun onCreate() {
-    super.onCreate()
-    loadReactNative(this)
-  }
+    override fun onCreate() {
+        super.onCreate()
+        loadReactNative(this)
+    }
 }

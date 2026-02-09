@@ -39,8 +39,6 @@ public class VoiceModule extends ReactContextBaseJavaModule
 
     @ReactMethod
     public void startListening() {
-
-        System.out.println("Start Listening");
         Handler mainHandler = new Handler(Looper.getMainLooper());
 
         mainHandler.post(() -> {
@@ -70,6 +68,7 @@ public class VoiceModule extends ReactContextBaseJavaModule
                     RecognizerIntent.EXTRA_PARTIAL_RESULTS,
                     true
             );
+
 
             speechRecognizer.startListening(intent);
         });

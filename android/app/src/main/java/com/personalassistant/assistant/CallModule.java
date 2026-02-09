@@ -49,6 +49,8 @@ public class CallModule extends ReactContextBaseJavaModule {
             return;
         }
 
+        System.out.println("Before Query");
+
         // 2️⃣ Query contacts
         Cursor cursor = context.getContentResolver().query(
                 ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
@@ -58,7 +60,11 @@ public class CallModule extends ReactContextBaseJavaModule {
                 null
         );
 
+        System.out.println("Before If");
+        System.out.println(cursor);
+        System.out.println("cursor");
         if (cursor != null && cursor.moveToFirst()) {
+            System.out.println("Inside If");
             @SuppressLint("Range") String phoneNumber = cursor.getString(
                     cursor.getColumnIndex(
                             ContactsContract.CommonDataKinds.Phone.NUMBER
@@ -66,6 +72,7 @@ public class CallModule extends ReactContextBaseJavaModule {
             );
             cursor.close();
 
+            System.out.println("Before Calling Intent");
             // 3️⃣ Call
             Intent intent = new Intent(Intent.ACTION_CALL);
             intent.setData(Uri.parse("tel:" + phoneNumber.replaceAll("\\s+", "")));
